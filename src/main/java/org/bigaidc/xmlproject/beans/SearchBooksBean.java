@@ -12,6 +12,7 @@ public class SearchBooksBean {
     JsonMapper jsonMapper = new JsonMapper();
 
     public String searchByAuthor(String name) {
+        System.out.println("bean " + name);
         return jsonMapper.map(xmlOps.FindBooksByAuthor(name));
     }
 

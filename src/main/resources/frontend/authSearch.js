@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var data = new FormData(form);
             console.log(data);
             $.ajax({
-                url: 'http://127.0.0.1/books/author',
+                url: 'http://127.0.0.1:8080/books/author',
                 type: "POST", // Any URL
                 enctype: 'application/x-www-form-urlencoded',
                 data: data,

@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var data = new FormData(form);
             console.log(data);
             $.ajax({
-                    url: 'http://127.0.0.1/books/update-field',
+                    url: 'http://127.0.0.1:8080/books/update-field',
                     type: "POST", // Any URL
                 	enctype: 'application/x-www-form-urlencoded',
                 	data: data,

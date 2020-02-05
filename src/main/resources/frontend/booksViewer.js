@@ -172,7 +172,7 @@ var booksToBody = document.getElementById("booksTable");
 
 addDataToTbody(booksToBody, books);
   $.ajax({
-            url: 'http://127.0.0.1/books',
+            url: 'http://127.0.0.1:8080/books',
             type: "Get", // Any URL
         
             success: function (data) {

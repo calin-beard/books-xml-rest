@@ -24,7 +24,7 @@ public class XmlOps {
 	
 	// ++++++++++ version 3.0-very-pre-alfa +++++++++
 	
-	public static final String sPath = "/home/calin-barburescu/Documents/Uni/XML/project/rest-dsl/src/main/resources/xml";
+	public static final String sPath = "/home/calin-barburescu/Documents/Uni/XML/project/books-xml-rest/src/main/resources/xml";
 	private final String sXmlFile = "/Library.xml";
 	// do NOT override original
 	private final String sXmlUpdateFile = "/Library.update.xml";
@@ -32,7 +32,7 @@ public class XmlOps {
 	
 	final Parser parserDom = new Parser();
 	final Controller controller = new Controller(parserDom);
-	
+
 	// +++ IO +++
 	public File GetFile() {
 		return new File(sPath + sXmlFile);
@@ -43,7 +43,10 @@ public class XmlOps {
 	public File GetSchema() {
 		return new File(sPath + sSchemaFile);
 	}
-	
+
+	// DOM Parser
+	final Document doc = this.ParseDom();
+
 	// Print Articles
 	public void Print(final Vector<BookObj> vBooks) {
 		for(final BookObj article : vBooks) {

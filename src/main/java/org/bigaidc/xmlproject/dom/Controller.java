@@ -62,7 +62,9 @@ public class Controller {
 	
 	// Search Author of a book
 	public Vector<BookObj> FindBooksByAuthor(final String sAuthor) {
+		System.out.println(sAuthor);
 		final String smAuthor = sAuthor.toLowerCase();
+		System.out.println(smAuthor);
 		final Vector<BookObj> vBooksRes = new Vector<> ();
 		
 		vBooks.stream().forEach((book) -> {
