@@ -1,0 +1,78 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "rating":2,
+            "title": "Loop me to the end of Love",
+            "authors": [
+                {
+                    "id": 1,
+                    "name": "Garfunkel",
+                    "given-name": "Loop And"
+                }
+            ],
+            "date" : {
+                "year": 2019,
+                "month": 10,
+                "day": 14
+            },
+            "domain": {
+                "id": 1,
+                "name": "Science - IT - Loop Theory"
+            },
+            "published" : {
+                "publisher": {
+                    "id": 1,
+                    "name": "Top Informatics Press"
+                },
+                "location-id": {
+                    "eidtype": "doi",
+                    "v": 1,
+                    "value": "00.0000/t.info.2019.10.001"
+                }
+            }
+        },
+        {
+            "id": 2,
+			"rating":4,
+            "title": "The Design of Powerful Bibliographic Systems",
+            "authors": [
+                {
+                    "id": 1,
+                    "name": "Garfunkel",
+                    "given-name": "Loop And"
+                },
+                {
+                    "id": 2,
+                    "name": "C",
+                    "given-name": "A B"
+                },
+                {
+                    "id": 3,
+                    "name": "Dreistein",
+                    "given-name": "MC3"
+                }
+            ],
+            "date" : {
+                "year": 2019,
+                "month": 10,
+                "day": 14
+            },
+            "domain": {
+                "id": 1,
+                "name": "Science - IT - Loop Theory"
+            },
+            "published" : {
+                "publisher": {
+                    "id": 2,
+                    "name": "Interplanetary Press"
+                },
+                "location-id": {
+                    "eidtype": "doi",
+                    "v": 1,
+                    "value": "00.0000/t.info.2019.10.002"
+                }
+            }
+        }
+    ]
+}

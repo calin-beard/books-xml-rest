@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta cha>
+		<title> Library</title>
+		 <script src="addNewBook.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<form id="newBookForm" >
+		  <p >
+		    <label>Book rating</label><br>
+		    <label>
+		      <input type="radio" name="rating" value="1" required>
+		      1
+		    </label>
+		    <label>
+		      <input type="radio" name="rating" value="2">
+		      2
+		    </label>
+		    <label>
+		      <input type="radio" name="rating" value="3">
+		      3
+		    </label>
+		      <label>
+		      <input type="radio" name="rating" value="4">
+		      4
+		    </label>
+		      <label>
+		      <input type="radio" name="rating" value="5">
+		      5
+		    </label>
+		  </p>
+
+		  <p>
+		    <label>Boook title</label><br>
+		    <input type="text" name="title" required>
+		  </p>
+		  <p>
+		    <label>Author</label><br>
+		    <input type="text" name="author" required>
+		  </p>
+		  <p>
+		    <label>Date published</label><br>
+		    <input type="date" name="date" required>
+		  </p>
+		  <label>Domain</label><br>
+		  <input type="text" name="domain" required>
+		  <p>
+		    <label>Country</label><br>
+		    <select>
+		      <option>China</option>
+		      <option>India</option>
+		      <option>United States</option>
+		      <option>Indonesia</option>
+		      <option>Brazil</option>
+		    </select>
+		  </p>
+		
+		   	<input type="submit" value="Submit">
+		   	<input type="reset" value="Reset">
+		</form>
+	</body>
+
+</html>

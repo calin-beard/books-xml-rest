@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta cha>
+		<title> Library</title>
+		 <link rel="stylesheet" href="authorSearch.css">
+		 <script src="authSearch.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<form id="authSearchForm">
+			<div id="inputContainer">
+				<label>Author Name </label>
+			    <input type="text" name="author" required>
+			    <input type="submit" value="Submit">
+			</div>
+
+			<div id="tableContainer">
+				<table id="booksTable">
+				  <thead>
+				    <tr>
+					     <th onclick="sortTable(0)">Title</th>
+					     <th onclick="sortTable(1)">Author</th>
+					     <th onclick="sortTable(2)">Rating</th>
+					     <th onclick="sortTable(3)">Date</th>
+					     <th onclick="sortTable(4)">Domain</th>
+					     <th onclick="sortTable(5)">Publisher</th>
+				    </tr>
+				  </thead>
+			  	<tbody></tbody>
+				</table>
+			</div>
+		</form>
+	</body>
+
+</html>
