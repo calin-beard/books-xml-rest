@@ -1,4 +1,4 @@
-package org.bigaidc.xmlproject.dom;
+package dom;
 
 public enum BIB_NODES {
 	ROOT("BibManagement", false, null),
@@ -21,10 +21,11 @@ public enum BIB_NODES {
 		BOOK("Book", false, BOOKS_LIST),
 		BOOK_AUTHORS_LIST("Authors", false, BOOK),
 		BOOK_AUTHOR("Author", false, BOOK_AUTHORS_LIST),
-		TITLE("Title", true, BOOK),
+		BOOK_TITLE("Title", true, BOOK),
 		BOOK_DOMAIN("Domain", true, BOOK),
 		BOOK_PUBLISHER_BASE("Published", false, BOOK),
 		BOOK_PUBLISHER("Publisher", false, BOOK_PUBLISHER_BASE),
+		BOOK_PUBLISHER_LocationID("LocationID", false, BOOK_PUBLISHER_BASE),
 		DATE("Date", false, BOOK),
 		DATE_YEAR("Year", true, DATE),
 		RATINGS("Ratings", true, BOOK),

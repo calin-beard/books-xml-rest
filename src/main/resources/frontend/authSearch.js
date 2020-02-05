@@ -94,10 +94,16 @@ document.addEventListener("DOMContentLoaded", function() {
  	var form = document.querySelector('#authSearchForm');
     form.addEventListener('submit', function (event) {
         try {
-            var data = new FormData(form);
+//            var data = new FormData(form);
+            var data = document.getElementById("author").value;
+            data = "author=" + data;
             console.log(data);
             $.ajax({
-                url: 'http://127.0.0.1:8080/books/author',
+                url: 'http://localhost:8080/books/author',
+                crossDomain: true,
+                headers: {
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
                 type: "POST", // Any URL
                 enctype: 'application/x-www-form-urlencoded',
                 data: data,

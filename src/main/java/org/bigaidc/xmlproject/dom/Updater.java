@@ -1,4 +1,4 @@
-package org.bigaidc.xmlproject.dom;
+package dom;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,20 +7,21 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Vector;
 
-import org.bigaidc.xmlproject.data.BookObj;
-import org.bigaidc.xmlproject.data.BoolPair;
-import org.bigaidc.xmlproject.data.DomainMap;
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
-import org.bigaidc.xmlproject.data.AuthorObj;
-import org.bigaidc.xmlproject.data.AuthorsDict;
-import org.bigaidc.xmlproject.data.GetMapsINTF;
-import org.bigaidc.xmlproject.data.PublisherMap;
-import org.bigaidc.xmlproject.data.PublisherObj;
+import data.AuthorObj;
+import data.AuthorsDict;
+import data.BookObj;
+import data.BoolPair;
+import data.DomainMap;
+import data.GetMapsINTF;
+import data.PublisherMap;
+import data.PublisherObj;
 // import sax.BIB_NODES;
 
 public class Updater {
@@ -83,12 +84,54 @@ public class Updater {
 	}
 	
 	// ++++ Find Functions ++++	
-	// are part of class Controller
+	// are moved to class Controller
 	
 	// ++++ Update Functions ++++
 	
 	// ++++ Add Functions ++++
+	// Book
+	public void AddBook(final BookObj book) {
+		final Element rootBooks = (Element) document.selectSingleNode(sXP_BOOKS);
+		if(rootBooks == null) {
+			return; // fatal error
+		}
+		// 1.) add xml Book node
+		final Element nodeBook = DocumentHelper.createElement(BIB_NODES.BOOK.GetNode());
+		book.idBook = 10; // TODO: proper ID
+		nodeBook.addAttribute("idBook", book.idBook.toString());
+		rootBooks.add(nodeBook);
+		// 1.a.) Title
+		final Element nodeTitle = DocumentHelper.createElement(BIB_NODES.BOOK_TITLE.GetNode());
+		nodeTitle.addText(book.sTitle);
+		nodeBook.add(nodeTitle);
+		
+		// 2.) add Authors
+		final Element nodeAuthors = DocumentHelper.createElement(BIB_NODES.BOOK_AUTHORS_LIST.GetNode());
+		nodeBook.add(nodeAuthors);
+		this.AddAuthor(book, nodeAuthors);
+		
+		// 3.) add Date
+		final Element nodeDate = DocumentHelper.createElement(BIB_NODES.DATE.GetNode());
+		nodeBook.add(nodeDate);
+		final Element nodeDateYear = DocumentHelper.createElement(BIB_NODES.DATE_YEAR.GetNode());
+		nodeDateYear.addText("" + book.iYear);
+		nodeDate.add(nodeDateYear);
+		
+		// 4.) add Publisher
+		this.AddPublisher(book.publisher);
+		final Element nodePublisherRoot = DocumentHelper.createElement(BIB_NODES.BOOK_PUBLISHER_BASE.GetNode());
+		nodeBook.add(nodePublisherRoot);
+		final Element nodePublisher = DocumentHelper.createElement(BIB_NODES.BOOK_PUBLISHER.GetNode());
+		nodePublisher.addAttribute("idPub", book.publisher.id.toString());
+		nodePublisherRoot.add(nodePublisher);
+		final Element nodePublisherLocation = DocumentHelper.createElement(BIB_NODES.BOOK_PUBLISHER_LocationID.GetNode());
+		nodePublisherLocation.addAttribute("EIdType", "doi");
+		nodePublisherRoot.add(nodePublisherLocation);
+		// TODO: add text
+		
+	}
 	
+	// Publisher
 	public Integer AddPublisher(final PublisherObj publisher) {
 		final Integer idPublisher = mapPublishers.GetOrSetPublisher(publisher);
 		// get xml node
@@ -137,13 +180,15 @@ public class Updater {
 		rootAuthors.add(nodeAuthor);
 	}
 	public void AddAuthor(final BookObj book) {
-		// get xml node: Authors root
+		// get xml node: Book Authors root
 		final String sXP_BOOK_AUTHORS_ROOT = this.Fill(Updater.sXP_BOOK_AUTHORS_ROOT, "\\$Book", book.idBook.toString());
 		final Element rootAuthors = (Element) document.selectSingleNode(sXP_BOOK_AUTHORS_ROOT);
 		if(rootAuthors == null) {
 			return; // fatal Error // TODO
 		}
-		
+		this.AddAuthor(book, rootAuthors);
+	}
+	public void AddAuthor(final BookObj book, final Element rootAuthors) {
 		// Authors
 		for(final AuthorObj author : book.vAuthors) {
 			final BoolPair<Integer> idAuthor = mapAuthors.GetOrSetAuthor(author);

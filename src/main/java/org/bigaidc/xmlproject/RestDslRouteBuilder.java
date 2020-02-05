@@ -38,7 +38,7 @@ public class RestDslRouteBuilder extends RouteBuilder {
                 .post("author").route().bean(SearchBooksBean.class, "searchByAuthor(${body.author})").setHeader("Origin",constant("http://localhost:8080")).endRest()
                 .get("author/{name}").route().bean(SearchBooksBean.class, "searchByAuthor(${header.name})").setHeader("Origin",constant("http://localhost:8080")).endRest()
                 .post("title").route().bean(SearchBooksBean.class, "searchByTitle(${body.title})").endRest()
-                .get("title/{title}").route().bean(SearchBooksBean.class, "searchByTitle(${header.title})").endRest()
+                .get("title/{title}").route().bean(SearchBooksBean.class, "searchByTitle(${header.title}s)").endRest()
                 .get("authorCount/{minCount}").route().bean(SearchBooksBean.class, "searchByAuthorsCount(${header.minCount})").endRest()
                 .get("titleRegex/{regex}").route().bean(SearchBooksBean.class, "searchByTitleRegex(${header.regex})").endRest()
                 .post("domain").route().bean(SearchBooksBean.class, "searchByDomain(${body.domain})").endRest()

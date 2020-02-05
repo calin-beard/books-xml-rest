@@ -13,6 +13,7 @@ public class SearchBooksBean {
 
     public String searchByAuthor(String name) {
         System.out.println("bean " + name);
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         return jsonMapper.map(xmlOps.FindBooksByAuthor(name));
     }
 
