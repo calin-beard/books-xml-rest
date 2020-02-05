@@ -40,7 +40,7 @@ public class Controller {
 				vBooksRes.add(book);
 			}
 		});
-		
+
 		return vBooksRes;
 	}
 	// Search Title of books using a Regex
